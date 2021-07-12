@@ -12,7 +12,8 @@ COMBINACIÓN DE DESCENDENTES: .cliente .nombre {color: blue;} (funciona con clas
 SELECCIONAR TODOS LOS HIJOS: .cliente >p {color: blue;}
  */
 :root {
-  --blanco: #ffffff --oscuro #212121;
+  --blanco: #ffffff;
+  --oscuro: #212121;
   --primario: #ffc107;
   --secundario: #0097a7;
   --gris: #757575;
