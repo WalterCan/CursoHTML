@@ -17,10 +17,12 @@ SELECCIONAR TODOS LOS HIJOS: .cliente >p {color: blue;}
   --primario: #ffc107;
   --secundario: #0097a7;
   --gris: #757575;
+  --grisClaro: #dfe9f3;
 }
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  scroll-snap-type: y mandatory;
 }
 *,
 *:before,
@@ -30,6 +32,11 @@ html {
 body {
   font-size: 16px; /* 1rem = 10px*/
   font-family: "Krub", sans-serif;
+  background-image: linear-gradient(
+    to top,
+    var(--grisClaro) 0%,
+    var(--blanco) 100%
+  ); /*ESTE CODIGO DEGRADA EL COLOR DE FONDO DE ABAJO HACIA ARRIBA. DE GRIS CLARO A BLANCO*/
 }
 h1 {
   font-size: 3.8rem;
@@ -65,11 +72,38 @@ h3 {
   border-radius: 0.5rem;
   width: 90%;
   text-align: center;
+  border: none;
 }
 @media (min-width: 480px) {
   .boton {
     width: auto;
   }
+}
+/* Utilidades */
+.w-sm-100 {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .w-sm-100 {
+    width: auto;
+  }
+}
+.flex {
+  display: flex;
+}
+.alinear-derecha {
+  justify-content: flex-end;
+}
+.boton:hover {
+  cursor: pointer;
+}
+.sombra {
+  -webkit-box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.75);
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 1rem;
 }
 .nav-bg {
   background-color: var(--secundario);
@@ -103,6 +137,7 @@ h3 {
   background-size: cover;
   height: 450px;
   position: relative;
+  margin-bottom: 2rem;
 }
 .contenido-hero {
   position: absolute;
@@ -124,4 +159,79 @@ h3 {
 .ubicacion {
   display: flex;
   align-items: flex-end;
+}
+/* scroll */
+/* .servicios,
+.navegacion-principal,
+.formulario {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+} */
+/* Servicios */
+@media (min-width: 768px) {
+  .servicios {
+    display: grid; /* habilitando display Grid para poder, para poder distribuir el diseño en distintas areas dentro de un contenedor .. utilizando row y colum al mismo ttiempo... no como Flexbox*/
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+  }
+}
+.servicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.servicio h3 {
+  color: var(--secundario);
+  font-weight: normal;
+}
+.servicio p {
+  line-height: 2;
+  text-align: center;
+}
+.servicio .iconos {
+  height: 15rem;
+  width: 15rem;
+  background-color: var(--primario);
+  border-radius: 50%; /* Hacer el contenedor al ser un cuadrado, transformarlo en circulo*/
+  /*Centar los iconos con display flex*/
+  display: flex; /* los coloca uno frente al otro */
+  justify-content: space-evenly;
+  align-items: center; /* nos permite alinear verticalmente*/
+}
+/* Contacto */
+.formulario {
+  background-color: var(--gris);
+  width: min(60rem, 100%); /*Utiliza el valor más pequeño*/
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.formulario fieldset {
+  border: none;
+}
+.formulario legend {
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--primario);
+}
+/* Editando campos del formulario */
+.contenedor-campos {
+}
+.campo {
+  margin-bottom: 1rem;
+}
+.campo label {
+  color: var(--blanco);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.input-text {
+  width: 100%;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
 }
